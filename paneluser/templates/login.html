@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customstyle %}
+<style>
+body{
+    height:100vh;
+    background-image: url("{% static 'image/bg.jpg' %}");
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.ae-login{
+    background:rgba(255,255,255,0.75)
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="ae-login w-50 h-50 d-flex justify-content-center align-items-center rounded">
+        Login
+    </div>
+</div>
+{% endblock %}

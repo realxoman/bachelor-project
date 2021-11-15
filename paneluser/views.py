@@ -4,4 +4,4 @@ from .models import User,ticket,orders,payment,packs,ticketpm
 
 
 def home(request):
-    return render(request, "base.html")
+    return render(request, "login.html")
