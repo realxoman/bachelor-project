@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+ثبت نام
+{% endblock %}
+{% block customstyle %}
+<style>
+body{
+    height:100vh;
+    background-image: url("{% static 'image/bg.jpg' %}");
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.ae-login{
+    animation-name: aelogin-anime;
+    animation-duration: 4s;
+    background:rgba(255,255,255,0.65);
+}
+@keyframes aelogin-anime {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.helptext {
+    display: none;
+}
+label{
+    margin:10px 0;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="ae-login p-5 d-flex flex-column justify-content-center align-items-center rounded">
+        <h2 class="h2">ثبت نام</h2>
+        <form id="login_form" action="" method="post" class="form-group">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit" class="btn btn-primary mt-3 mb-2 w-100">ثبت نام کنید</button>
+        
+        </form>
+        <a href="/" class="btn btn-success text-light mt-1 mb-2 w-100">ورود به سایت</a>
+    </div>
+</div>
+{% endblock %}

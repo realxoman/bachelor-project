@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block title%}
+   ورود به پنل کاربری
+{% endblock %}
 {% block customstyle %}
 <style>
 body{
@@ -11,15 +13,37 @@ body{
     background-position:center;
 }
 .ae-login{
-    background:rgba(255,255,255,0.75)
+    animation-name: aelogin-anime;
+    animation-duration: 4s;
+    background:rgba(255,255,255,0.65);
+}
+@keyframes aelogin-anime {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="h-100 d-flex align-items-center justify-content-center">
-    <div class="ae-login w-50 h-50 d-flex justify-content-center align-items-center rounded">
-        Login
+    <div class="ae-login p-5 d-flex flex-column justify-content-center align-items-center rounded">
+        <h2 class="h2">ورود به سایت</h2>
+        <form id="login_form" action="" method="post" class="form-group">
+        {% csrf_token %}
+        <div class="form-group">
+          <label class="mt-3 mb-2" for="">نام کاربری شما</label>
+          <input type="text"
+            class="form-control" class="p-2" dir="ltr" name="username"  id="username" aria-describedby="helpId" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label class="mt-3 mb-2" for="">رمز عبور شما</label>
+          <input
+            class="form-control" class="p-2" dir="ltr" type="password" name="password" id="password" aria-describedby="helpId" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-success mt-3 mb-2 w-100">ورود به سایت</button>
+        
+        </form>
+        <a href="/signup/" class="btn btn-primary text-light mt-1 mb-2 w-100">ثبت نام کنید</a>
     </div>
 </div>
 {% endblock %}
