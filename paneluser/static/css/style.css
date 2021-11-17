@@ -234,4 +234,80 @@ Iranic fonts
   src: url("fonts/eot/dana-regularitalic.eot?#iefix") format("embedded-opentype"), url("fonts/woff2/dana-regularitalic.woff2") format("woff2"), url("fonts/woff/dana-regularitalic.woff") format("woff");
   /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 }
+
+/* 
+    ae Prefix Uses Because of Ali Esmaeili shortance. 
+    This Project is for my bachelor final assignment
+    Pr.Shabnam Asbaghi
+*/
+body {
+  background: #d6d7f1;
+  background-repeat: no-repeat;
+}
+
+.ae-full {
+  height: 100vh;
+}
+
+.ae-bg {
+  max-width: 85%;
+  position: relative;
+  height: 80vh;
+  margin: auto;
+  background: #d6d7f1;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(51%, #d6d7f1), to(white));
+  background: linear-gradient(0deg, #d6d7f1 51%, white 100%);
+  border-radius: 25px;
+  background-repeat: no-repeat;
+}
+
+.ae-bg .ae-fullside {
+  width: 20%;
+  right: -4em;
+}
+
+.ae-bg .ae-fullside .ae-sidebar {
+  height: 70vh;
+  background-color: #161C21;
+  width: 100%;
+  color: #fff;
+  border-radius: 25px;
+}
+
+.ae-bg .ae-fullside .ae-sidebar h1.ae-sidelogo {
+  text-align: center;
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+.ae-bg .ae-fullside .ae-sidebar a.btn {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ae-bg .ae-fullside .ae-sidebar a.btn i {
+  font-size: 18px;
+}
+
+.ae-bg .ae-fullside .ae-sidebar a.btn span {
+  width: 100px;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.dashboard a.btn.ae-menu-dashboard,
+.products a.btn.ae-menu-products,
+.orders a.btn.ae-menu-orders,
+.users a.btn.ae-menu-users,
+.ticket a.btn.ae-menu-ticket,
+.logout a.btn.ae-menu-logout {
+  background: #fff;
+  color: #000;
+}
 /*# sourceMappingURL=style.css.map */

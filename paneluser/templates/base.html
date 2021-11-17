@@ -13,13 +13,19 @@
     </title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     {% block customstyle %}
     {% endblock %}
 </head>
-<body dir="rtl">
+{% block body %}
+<body dir="rtl" class="">
+{% endblock %}
+<div class="position-relative h-100">
     {% block content %}
 
     {% endblock %}
+</div>
+    
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 </body>

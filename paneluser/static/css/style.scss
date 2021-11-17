@@ -1,3 +1,70 @@
 @import "reset";
 @import "fonts";
 @import "colors";
+
+/* 
+    ae Prefix Uses Because of Ali Esmaeili shortance. 
+    This Project is for my bachelor final assignment
+    Pr.Shabnam Asbaghi
+*/
+
+body{
+    background: rgb(214,215,241);
+    background-repeat: no-repeat;
+}
+.ae-full{
+    height: 100vh;
+
+}
+.ae-bg{
+    max-width: 85%;
+    position: relative;
+    height: 80vh;
+    margin: auto;
+    background: rgb(214,215,241);
+    background: linear-gradient(0deg, rgba(214,215,241,1) 51%, rgba(255,255,255,1) 100%); 
+    border-radius: 25px;
+    background-repeat: no-repeat;
+    .ae-fullside{
+        width: 20%;
+        right: -4em;
+        .ae-sidebar{
+            height: 70vh;
+            background-color: $brandcolor;
+            width: 100%;
+            color: #fff;
+            border-radius: 25px;
+            h1.ae-sidelogo{
+                text-align: center;
+                font-weight: 300;
+                font-size: 1em;
+                line-height: 1.5em;
+            }
+            a.btn{
+                margin: auto;
+                display: flex;
+                align-items: center;
+                i{
+                    font-size: 18px;
+                }
+                span{
+                    width: 100px;
+                    text-align: right;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+
+.dashboard a.btn.ae-menu-dashboard,
+.products a.btn.ae-menu-products,
+.orders a.btn.ae-menu-orders,
+.users a.btn.ae-menu-users,
+.ticket a.btn.ae-menu-ticket,
+.logout a.btn.ae-menu-logout,
+{
+    background:#fff;
+    color:#000;
+}
