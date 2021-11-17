@@ -3,7 +3,7 @@ from .models import User,ticket,orders,payment,packs,ticketpm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from .forms import SignUpForm
-from django.views.generic import View
+from django.views.generic import View,ListView
 # Create your views here.
 
 def signup(request):
@@ -58,26 +58,18 @@ class AdminPanel(View):
     def get(self,request):
         return render(request,self.template_name)
     
-class AdminProducts(View):
-    template_name = "products.html"
+class AdminProducts(ListView):
+    model = packs
+    paginate_by = 20
     
-    def get(self,request):
-        return render(request,self.template_name)
-    
-class AdminOrders(View):
-    template_name = "dashboard.html"
-    
-    def get(self,request):
-        return render(request,self.template_name)
+class AdminOrders(ListView):
+    model = orders
+    paginate_by = 20
 
-class AdminUsers(View):
-    template_name = "dashboard.html"
+class AdminUsers(ListView):
+    model = User
+    paginate_by = 20
     
-    def get(self,request):
-        return render(request,self.template_name)
-    
-class AdminTickets(View):
-    template_name = "dashboard.html"
-    
-    def get(self,request):
-        return render(request,self.template_name)
+class AdminTickets(ListView):
+    model = ticket
+    paginate_by = 20

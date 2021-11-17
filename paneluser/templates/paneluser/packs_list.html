@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<body dir="rtl" class="products">
+   {% endblock %}
+
+
+   {% block title%}
+   تمامی محصولات
+   {% endblock %}
+
+   {% block content %}
+
+   {% include 'includes/panel.html' %}
+   <a href="#" class="ae-create-btn btn btn-outline-primary position-absolute">ساخت محصول جدید</a>
+
+   <div class="ae-table w-100 row">
+      <div class="col-3"></div>
+      <div class="col-8">
+         <div class="table-responsive-md">
+            <table class="table">
+               <thead class="table-dark">
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">نام محصول</th>
+                     <th scope="col">وضعیت محصول</th>
+                     <th scope="col">قیمت</th>
+                     <th scope="col">عملیات</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <th scope="row">1</th>
+                     <td>Mark</td>
+                     <td>Otto</td>
+                     <td>@mdo</td>
+                     <td>@mdo</td>
+                  </tr>
+               </tbody>   
+            </table>
+         </div>
+      </div>
+      <div class="col-1"></div>
+   </div>
+   </div>
+   </div>
+
+
+   {% endblock %}

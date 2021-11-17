@@ -63,8 +63,19 @@ body{
 .orders a.btn.ae-menu-orders,
 .users a.btn.ae-menu-users,
 .ticket a.btn.ae-menu-ticket,
-.logout a.btn.ae-menu-logout,
 {
     background:#fff;
     color:#000;
+}
+
+a.btn.ae-create-btn{
+    left:30px;
+    right: auto;
+    top:30px;
+}
+
+.ae-table{
+    top:0;
+    right: 0;
+    left: auto;
 }
