@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load mathfilters %}
 {% block body %}
 
 <body dir="rtl" class="products">
@@ -13,11 +13,20 @@
    {% block content %}
 
    {% include 'includes/panel.html' %}
-   <a href="#" class="ae-create-btn btn btn-outline-primary position-absolute">ساخت محصول جدید</a>
+   <a href="create/" class="ae-create-btn btn btn-outline-primary position-absolute">ساخت محصول جدید</a>
 
    <div class="ae-table w-100 row">
       <div class="col-3"></div>
       <div class="col-8">
+         {% if messages %}
+         <div class="p-2 m-4 rounded bg-success text-light">
+            <ul class="messages mt-4">
+               {% for message in messages %}
+               <li{% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</li>
+                  {% endfor %}
+            </ul>
+         </div>
+         {% endif %}
          <div class="table-responsive-md">
             <table class="table">
                <thead class="table-dark">
@@ -30,15 +39,49 @@
                   </tr>
                </thead>
                <tbody>
+                  {% for product in object_list %}
                   <tr>
-                     <th scope="row">1</th>
-                     <td>Mark</td>
-                     <td>Otto</td>
-                     <td>@mdo</td>
-                     <td>@mdo</td>
+                     <th scope="row">
+                        {% if page_obj.number == 1 %}
+                        {{ forloop.counter }}
+                        {% else %}
+                        {{ page_obj.previous_page_number|mul:5|add:forloop.counter }}
+                        {% endif %}
+                     </th>
+                     <td>{{product.name}}</td>
+                     <td>
+                        {% if product.enable_check == True %}
+                        ✅ فعال
+                        {% else %}
+                        ❌ غیرفعال
+                        {% endif %}
+
+                     </td>
+                     <td>{{product.price}} تومان</td>
+                     <td>
+                        <div class="d-flex justify-content-center">
+                           <a href="update/{{product.id}}" class="btn btn-primary mx-2">ویرایش</a>
+                           <a href="delete/{{product.id}}" class="btn btn-danger mx-2">پاکسازی</a>
+                        </div>
+                     </td>
                   </tr>
-               </tbody>   
+               </tbody>
+               {% endfor %}
             </table>
+            <div class="d-flex justify-content-center">
+               {% if page_obj.has_previous %}
+               <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-warning mx-2">صفحه‌ی قبلی</a>
+               {% else %}
+               <p class="btn btn-dark mx-2">صفحه‌ی قبلی نداریم :)</p>
+               {% endif %}
+               {% if page_obj.has_next %}
+               <a href="?page={{ page_obj.next_page_number }}" class="btn btn-success mx-2">صفحه‌ی بعدی</a>
+               {% else %}
+               <p class="btn btn-dark mx-2">صفحه‌ی بعدی نداریم :)</p>
+               {% endif %}
+            </div>
+
+
          </div>
       </div>
       <div class="col-1"></div>

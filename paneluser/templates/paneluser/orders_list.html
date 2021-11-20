@@ -1,21 +1,90 @@
 {% extends 'base.html' %}
-
+{% load mathfilters %}
 {% block body %}
+
 <body dir="rtl" class="orders">
-{% endblock %}
+   {% endblock %}
 
 
-{% block title%}
+   {% block title%}
    تمامی سفارشات
-{% endblock %}
+   {% endblock %}
 
-{% block content %}
+   {% block content %}
 
-{% include 'includes/panel.html' %}
+   {% include 'includes/panel.html' %}
 
+   <div class="ae-table w-100 row">
+      <div class="col-3"></div>
+      <div class="col-8">
+         {% if messages %}
+         <div class="p-2 m-4 rounded bg-success text-light">
+            <ul class="messages mt-4">
+               {% for message in messages %}
+               <li{% if message.tags %} class="{{ message.tags }} text-center" {% endif %}>{{ message }}</li>
+                  {% endfor %}
+            </ul>
+         </div>
+         {% endif %}
+         <div class="table-responsive-md">
+            <table class="table">
+               <thead class="table-dark">
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">نام محصول</th>
+                     <th scope="col">نام خریدار</th>
+                     <th scope="col">وضعیت سفارش</th>
+                     <th scope="col" class="text-center">عملیات</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for order in object_list %}
+                  <tr>
+                     <th scope="row">
+                        {% if page_obj.number == 1 %}
+                        {{ forloop.counter }}
+                        {% else %}
+                        {{ page_obj.previous_page_number|mul:5|add:forloop.counter }}
+                        {% endif %}
+                     </th>
+                     <td>{{order.packs.name}}</td>
+                     <td>{{order.user.username}}</td>
+                     <td>
+                        {{order.get_status_display}}
+
+                     </td>
+                     <td>
+                        <div class="d-flex justify-content-center">
+                           <a href="update/{{order.id}}" class="btn btn-primary mx-2">ویرایش</a>
+                           <a href="delete/{{order.id}}" class="btn btn-danger mx-2">پاکسازی</a>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+               {% endfor %}
+            </table>
+            <div class="d-flex justify-content-center">
+               {% if page_obj.has_previous %}
+               <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-warning mx-2">صفحه‌ی قبلی</a>
+               {% else %}
+               <p class="btn btn-dark mx-2">صفحه‌ی قبلی نداریم :)</p>
+               {% endif %}
+               {% if page_obj.has_next %}
+               <a href="?page={{ page_obj.next_page_number }}" class="btn btn-success mx-2">صفحه‌ی بعدی</a>
+               {% else %}
+               <p class="btn btn-dark mx-2">صفحه‌ی بعدی نداریم :)</p>
+               {% endif %}
+            </div>
+
+
+         </div>
+      </div>
+      <div class="col-1"></div>
    </div>
-</div>
+   </div>
+   </div>
 
 
 
-{% endblock %}
+
+   {% endblock %}

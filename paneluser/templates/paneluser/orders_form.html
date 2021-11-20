@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block body %}
+
+<body dir="rtl" class="orders">
+   {% endblock %}
+
+
+   {% block title%}
+ویرایش سفارش {{ object }}
+   {% endblock %}
+
+   {% block content %}
+
+   {% include 'includes/panel.html' %}
+<style>
+.ae-table{
+height:80%;
+}
+form p{
+   margin: 20px 0;
+}
+form input{
+   padding:10px;
+   border-radius:10px;
+}
+</style>
+   <div class="ae-table w-100 row">
+      <div class="col-3"></div>
+      <div class="col-8">
+<form method="POST">{% csrf_token %}
+    
+<!-- form variable -->
+{{ form.media }}    
+ {{ form.as_p }} 
+
+  <input class="m-4 btn btn-success" type="submit" name="submit" value="بله مطمئنم" />
+   <a href="../" class="btn btn-warning">نه نه اشتباه شد</a>
+</form>
+         </div>
+      </div>
+      <div class="col-1"></div>
+   </div>
+   </div>
+   </div>
+
+
+   {% endblock %}

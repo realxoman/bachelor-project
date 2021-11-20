@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<body dir="rtl" class="products">
+    {% endblock %}
+
+    {% block title%}
+    حذف محصول {{ object }}
+        {% endblock %}
+
+    {% block content %}
+
+    {% include 'includes/panel.html' %}
+    <div class="ae-table w-100 row">
+        <div class="col-3"></div>
+        <div class="col-8">
+
+            <form action="" method="post">{% csrf_token %}
+                <p class="m-4">آیا از حذف محصول "{{ object }}" مطمئن هستید؟ </p>
+                <input class="m-4 btn btn-success" type="submit" value="بله مطمئنم" />
+                <a href="../" class="btn btn-warning">نه نه اشتباه شد</a>
+            </form>
+
+        </div>
+    </div>
+    <div class="col-1"></div>
+    {% endblock %}

@@ -30,10 +30,24 @@ class CustomUserAdmin(UserAdmin):
 		}),
 	)
 
+
+def duplicate_event(modeladmin, request, queryset):
+    for object in queryset:
+        object.name = object.name + str(object.id)
+        object.id = None
+        object.save()
+duplicate_event.short_description = "کپی کردن"
+
+
+class Packsadmin(admin.ModelAdmin):
+    save_as = True
+    actions = [duplicate_event]
+    
 admin.site.unregister(Group)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(ticket)
 admin.site.register(orders)
 admin.site.register(payment)
-admin.site.register(packs)
+admin.site.register(packs,Packsadmin)
 admin.site.register(ticketpm)
+
