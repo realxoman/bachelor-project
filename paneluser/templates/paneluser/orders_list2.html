@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
 {% load mathfilters %}
 {% block body %}
-<body dir="rtl" class="ticket">
-{% endblock %}
+
+<body dir="rtl" class="orders">
+   {% endblock %}
 
 
-{% block title%}
-   تمامی تیکت‌ها
-{% endblock %}
+   {% block title%}
+   تمامی سفارشات
+   {% endblock %}
 
-{% block content %}
+   {% block content %}
 
-{% include 'includes/panel.html' %}
-   <a href="create/" class="ae-create-btn btn btn-outline-primary position-absolute">ساخت تیکت جدید</a>
-
+   {% include 'includes/panel-user.html' %}
 
    <div class="ae-table w-100 row">
       <div class="col-3"></div>
@@ -33,8 +32,8 @@
                   <tr>
                      <th scope="col">#</th>
                      <th scope="col">نام محصول</th>
-                     <th scope="col">نام کاربر</th>
-                     <th scope="col">وضعیت تیکت</th>
+                     <th scope="col">نام خریدار</th>
+                     <th scope="col">وضعیت سفارش</th>
                      <th scope="col" class="text-center">عملیات</th>
                   </tr>
                </thead>
@@ -48,7 +47,7 @@
                         {{ page_obj.previous_page_number|mul:5|add:forloop.counter }}
                         {% endif %}
                      </th>
-                     <td>{{order.order.packs.name}} {{order.order.id}}</td>
+                     <td>{{order.packs.name}}</td>
                      <td>{{order.user.username}}</td>
                      <td>
                         {{order.get_status_display}}
@@ -56,8 +55,7 @@
                      </td>
                      <td>
                         <div class="d-flex justify-content-center">
-                           <a href="update/{{order.id}}" class="btn btn-primary mx-2">ویرایش یا پاسخ</a>
-                           <a href="delete/{{order.id}}" class="btn btn-danger mx-2">پاکسازی</a>
+                           <a href="order/{{order.id}}" class="btn btn-primary mx-2">توضیحات</a>
                         </div>
                      </td>
                   </tr>
@@ -88,4 +86,4 @@
 
 
 
-{% endblock %}
+   {% endblock %}

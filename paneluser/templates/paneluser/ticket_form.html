@@ -2,12 +2,12 @@
 {% load mathfilters %}
 {% block body %}
 
-<body dir="rtl" class="products">
+<body dir="rtl" class="ticket">
    {% endblock %}
 
 
    {% block title%}
-ویرایش محصول {{ object }}
+تیکت {{ object }}
    {% endblock %}
 
    {% block content %}
@@ -28,7 +28,7 @@ form input{
    <div class="ae-table w-100 row">
       <div class="col-3"></div>
       <div class="col-lg-8">
-<form method="POST">{% csrf_token %}
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
     
 <!-- form variable -->
 {{ form.media }}    

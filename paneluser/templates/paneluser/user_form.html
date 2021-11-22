@@ -2,12 +2,12 @@
 {% load mathfilters %}
 {% block body %}
 
-<body dir="rtl" class="products">
+<body dir="rtl" class="users">
    {% endblock %}
 
 
    {% block title%}
-ویرایش محصول {{ object }}
+ویرایش کاربر {{ object }}
    {% endblock %}
 
    {% block content %}
@@ -23,6 +23,10 @@ form p{
 form input{
    padding:10px;
    border-radius:10px;
+}
+label{
+   display:block;
+   margin:15px 5px;
 }
 </style>
    <div class="ae-table w-100 row">

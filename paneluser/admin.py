@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
-from .models import User,ticket,orders,payment,packs,ticketpm
+from .models import User,ticket,orders,packs,ticketpm
 # Register your models here.
 
 class CustomUserAdmin(UserAdmin):
@@ -47,7 +47,6 @@ admin.site.unregister(Group)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(ticket)
 admin.site.register(orders)
-admin.site.register(payment)
 admin.site.register(packs,Packsadmin)
 admin.site.register(ticketpm)
 

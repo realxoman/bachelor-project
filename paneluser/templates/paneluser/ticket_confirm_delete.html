@@ -2,11 +2,11 @@
 
 {% block body %}
 
-<body dir="rtl" class="orders">
+<body dir="rtl" class="ticket">
     {% endblock %}
 
     {% block title%}
-    حذف سفارش {{ object }}
+    حذف تیکت {{ object }}
         {% endblock %}
 
     {% block content %}
@@ -17,7 +17,7 @@
         <div class="col-lg-8">
 
             <form action="" method="post">{% csrf_token %}
-                <p class="m-4">آیا از حذف سفارش "{{ object }}" مطمئن هستید؟ </p>
+                <p class="m-4">آیا از حذف تیکت "{{ object }}" مطمئن هستید؟ </p>
                 <input class="m-4 btn btn-success" type="submit" value="بله مطمئنم" />
                 <a href="../" class="btn btn-warning">نه نه اشتباه شد</a>
             </form>

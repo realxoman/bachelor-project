@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block body %}
+
+<body dir="rtl" class="orders">
+   {% endblock %}
+
+
+   {% block title%}
+محصول {{object}}
+   {% endblock %}
+
+   {% block content %}
+<style>
+.ae-dashboard {
+height:80%;
+}
+.p-5 p{
+   margin:10px auto;
+   text-align:justify;
+   font-size:13px;
+   line-height:1.5em;
+}
+.ae-user-btn a{
+   font-size:14px
+}p{
+   line-height:1.25em;
+   text-align:justify;
+}strong{
+   line-height:1.5em;
+}
+.ae-price{
+   font-weight: bold;
+   font-size:20px;
+   text-align:center;
+   margin:20px;
+}
+</style>
+   {% include 'includes/panel-user.html' %}
+<a href="/usercp/" class="ae-create-btn btn btn-outline-primary position-absolute">برگشت به لیست محصولات</a>
+   <div class="ae-table w-100 row">
+      <div class="col-3"></div>
+      <div class="col-lg-8">
+         <h2 class="p-2 text-primary text-bold">نام محصول: <p class="p-2 text-dark">{{object.packs.name}}</p></h2>
+         <p class="p-2 text-primary text-bold">آخرین وضعیت: <p class="p-2 text-justify">{{object.status|safe}}</p></p>
+         <p class="p-2 text-primary text-bold">توضیح: <p class="p-2 text-justify">{{object.description|safe}}</p></p>
+         <p class="p-2 text-primary text-bold">فایل پیوست: <p class="p-2 text-justify"><a href="/media/{{object.attachment}}">{{object.attachment|safe}}</a></p></p>
+         <p class="ae-price p-2 text-success text-bold">قیمت: {{object.packs.price}} تومان</p>
+      </div>
+      <div class="col-1"></div>
+   </div>
+   </div>
+   </div>
+
+
+   {% endblock %}

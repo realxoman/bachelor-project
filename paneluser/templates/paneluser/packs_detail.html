@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block body %}
+
+<body dir="rtl" class="dashboard">
+   {% endblock %}
+
+
+   {% block title%}
+محصول {{object}}
+   {% endblock %}
+
+   {% block content %}
+<style>
+.ae-dashboard {
+height:80%;
+}
+.p-5 p{
+   margin:10px auto;
+   text-align:justify;
+   font-size:13px;
+   line-height:1.5em;
+}
+.ae-user-btn a{
+   font-size:14px
+}p{
+   line-height:1.25em;
+   text-align:justify;
+}strong{
+   line-height:1.5em;
+}
+.ae-price{
+   font-weight: bold;
+   font-size:20px;
+   text-align:center;
+   margin:20px;
+}
+</style>
+   {% include 'includes/panel-user.html' %}
+<a href="/usercp/" class="ae-create-btn btn btn-outline-primary position-absolute">برگشت به لیست محصولات</a>
+   <div class="ae-table w-100 row">
+      <div class="col-3"></div>
+      <div class="col-lg-8">
+         <h2 class="p-2 text-primary text-bold">نام محصول : <p class="p-2 text-dark">{{object.name}}</p></h2>
+         <p class="p-2 text-primary text-bold">توضیح : <p class="p-2 text-justify">{{object.full_desc|safe}}</p></p>
+         <p class="ae-price p-2 text-success text-bold">قیمت: {{object.price}} تومان</p>
+         <div class="row ae-user-btn justify-content-center">
+            <a href="#" class="col-lg-5 mx-2 btn btn-success">سفارش محصول</a>
+         </div>
+      </div>
+      <div class="col-1"></div>
+   </div>
+   </div>
+   </div>
+
+
+   {% endblock %}

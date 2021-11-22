@@ -27,8 +27,8 @@ form input{
 </style>
    <div class="ae-table w-100 row">
       <div class="col-3"></div>
-      <div class="col-8">
-<form method="POST">{% csrf_token %}
+      <div class="col-lg-8">
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
     
 <!-- form variable -->
 {{ form.media }}    

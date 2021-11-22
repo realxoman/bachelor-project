@@ -18,22 +18,6 @@ class packs(models.Model):
         return self.name
 
 
-class payment(models.Model):
-    userid = models.ForeignKey("User", on_delete=models.DO_NOTHING)
-    order_id = models.CharField(max_length=256,blank=True,null=True,unique=True)
-    amount = models.CharField(max_length=256,blank=True,null=True)
-    refnum = models.CharField(max_length=256,blank=True,null=True)
-    irtoken = models.CharField(max_length=256,blank=True,null=True)
-    transaction_id = models.CharField(max_length=256,blank=True,null=True)
-    cardnum = models.CharField(max_length=256,blank=True,null=True)
-    tracking_code = models.CharField(max_length=256,blank=True,null=True)
-    verify_check = models.BooleanField(default=False,verbose_name="Purchase okay?")
-    final_code = models.CharField(max_length=256,blank=True,null=True)
-    packs = models.ForeignKey("packs", on_delete=models.DO_NOTHING)
-
-    def __str__(self):
-        return self.tracking_code
-
 order_status = [
     ('pending_pay','در انتظار پرداخت'),
     ('doing','درحال انجام'),
@@ -93,7 +77,7 @@ class ticket(models.Model):
     
 class ticketpm(models.Model):
     user = models.ForeignKey("User", on_delete=models.DO_NOTHING,verbose_name="کاربر")
-    ticket = models.ForeignKey("ticket", on_delete=models.DO_NOTHING,verbose_name="تیکت")
+    ticket = models.ForeignKey("ticket", on_delete=models.CASCADE,verbose_name="تیکت")
     text = RichTextUploadingField(null=True,blank=True,verbose_name="متن")
     attachment = models.FileField(null=True,blank=True,upload_to=ticket_file_path,verbose_name="پیوست")
     def __str__(self):

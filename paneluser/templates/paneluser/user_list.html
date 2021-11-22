@@ -15,7 +15,7 @@
 
    <div class="ae-table w-100 row">
       <div class="col-3"></div>
-      <div class="col-8">
+      <div class="col-lg-8">
          {% if messages %}
          <div class="p-2 m-4 rounded bg-success text-light">
             <ul class="messages mt-4">
@@ -38,7 +38,7 @@
                   </tr>
                </thead>
                <tbody>
-                  {% for order in object_list %}
+                  {% for user in object_list %}
                   <tr>
                      <th scope="row">
                         {% if page_obj.number == 1 %}
@@ -47,17 +47,17 @@
                         {{ page_obj.previous_page_number|mul:5|add:forloop.counter }}
                         {% endif %}
                      </th>
-                     <td>{{order.first_name}} {{order.last_name}}</td>
-                     <td>{{order.username}}</td>
-                     <td>{{order.phonenumber}}</td>
+                     <td>{{user.first_name}} {{user.last_name}}</td>
+                     <td>{{user.username}}</td>
+                     <td>{{user.phonenumber}}</td>
                      <td>
-                        {{order.email}}
+                        {{user.email}}
 
                      </td>
                      <td>
                         <div class="d-flex justify-content-center">
-                           <a href="update/{{order.id}}" class="btn btn-primary mx-2">ویرایش</a>
-                           <a href="delete/{{order.id}}" class="btn btn-danger mx-2">پاکسازی</a>
+                           <a href="update/{{user.id}}" class="btn btn-primary mx-2">ویرایش</a>
+                           <a href="delete/{{user.id}}" class="btn btn-danger mx-2">پاکسازی</a>
                         </div>
                      </td>
                   </tr>

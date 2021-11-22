@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body dir="rtl" class="dashboard">
+{% endblock %}
+
+{% block title%}
+   داشبورد کاربران
+{% endblock %}
+
+{% block content %}
+
+{% include 'includes/panel-user.html' %}
+<style>
+.ae-dashboard {
+height:80%;
+}
+.p-5 p{
+   margin:10px auto;
+   text-align:justify;
+   font-size:13px;
+   line-height:1.5em;
+}
+.ae-user-btn a{
+   font-size:14px
+}
+</style>
+<div class="ae-dashboard row justify-content-lg-end justify-content-center align-items-end mt-lg-0 mt-5 align-items-lg-center w-100">
+   <div class="col-4 mx-5 my-3">
+         <h2>به پنل کاربری خوش آمدید</h2>
+      </div>
+      <div class="col-4 mx-5 my-3">
+      
+   </div>
+   {% for product in object_list %}
+   {% if product.enable_check == True %}
+   <div class="col-lg-4 col-md-4 mx-3 my-3">
+      <div class="bg-success p-5 text-light rounded">
+         <h2>نام محصول : {{product.name}}</h2>
+         <p>توضیح مختصر: {{product.short_desc|safe}}</p>
+         <p>قیمت: {{product.price}} تومان</p>
+         <div class="row ae-user-btn">
+            <a href="product/{{product.id}}" class="col-lg-5 mx-2 btn btn-warning">توضیحات محصول</a>
+            <a href="purchase/{{product.id}}" class="col-lg-5 mx-2 btn btn-primary">سفارش محصول</a>
+         </div>
+      </div>
+   </div>
+   {% endif %}
+   {% endfor %}
+</div>
+   </div>
+</div>
+
+{% endblock %}

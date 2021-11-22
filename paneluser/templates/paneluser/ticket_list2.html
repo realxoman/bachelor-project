@@ -11,7 +11,7 @@
 
 {% block content %}
 
-{% include 'includes/panel.html' %}
+{% include 'includes/panel-user.html' %}
    <a href="create/" class="ae-create-btn btn btn-outline-primary position-absolute">ساخت تیکت جدید</a>
 
 
@@ -56,8 +56,7 @@
                      </td>
                      <td>
                         <div class="d-flex justify-content-center">
-                           <a href="update/{{order.id}}" class="btn btn-primary mx-2">ویرایش یا پاسخ</a>
-                           <a href="delete/{{order.id}}" class="btn btn-danger mx-2">پاکسازی</a>
+                           <a href="update/{{order.id}}" class="btn btn-primary mx-2">بررسی</a>
                         </div>
                      </td>
                   </tr>

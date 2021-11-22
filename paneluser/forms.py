@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from .models import User,orders,ticketpm
 from django.forms import fields
+from django.forms import ModelForm
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class SignUpForm(UserCreationForm):
@@ -13,3 +15,12 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username', 'phonenumber' , 'password1' , 'password2')
+        
+class OrderProductForm(forms.Form):
+    description = forms.CharField(widget=CKEditorUploadingWidget())
+    
+    
+class TicketForm(ModelForm):
+    class Meta:
+        model = ticketpm
+        fields = "__all__"
