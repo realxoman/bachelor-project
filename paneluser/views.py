@@ -1,3 +1,4 @@
+from django.db.models.fields import Field
 from django.shortcuts import render, redirect
 from .models import User,ticket,orders,packs,ticketpm
 from django.contrib.auth import authenticate, login, logout
@@ -219,13 +220,22 @@ class AdminTicketCreateView(AdminStaffRequiredMixin,SuccessMessageMixin,CreateVi
 class UserUpdateTicketView(LoginRequiredMixin,SuccessMessageMixin,View):
     template_name="paneluser/ticket_update.html"
     form_class = TicketForm
-    def get(self,request):
-        ticketid = ticket.objects.get(id=self.kwargs['ticketid'])
+    def get(self,request,ticketid):
+        ticketid = ticket.objects.get(id=ticketid)
+        ticketpms = ticketpm.objects.filter(ticketid=ticketid)
         form = self.form_class
-        context = {'form':form,'ticketid':ticketid}
+        context = {'form':form,'ticketpms':ticketpms,'ticketid':ticketid}
         return render(request,self.template_name,context=context)
-    def post(self,request):
-        ticketid = ticket.objects.get(id=self.kwargs['ticketid'])
+    def post(self,request,ticketid):
+        ticketid = ticket.objects.get(id=ticketid)
+        ticketpms = ticketpm.objects.filter(ticketid=ticketid)
         form = self.form_class(request.POST)
-        context = {'form':form,'ticketid':ticketid}
+        if form.is_valid():
+            desc = request.POST.get('text')
+            attach = request.POST.get('attachment')
+            ticketpm1 = ticketpm(user=request.user,ticketid=ticketid,text=desc,attachment=attach)
+            ticketid.status = "customer_answer"
+            ticketid.save()
+            ticketpm1.save()
+        context = {'form':form,'ticketpms':ticketpms,'ticketid':ticketid}
         return render(request,self.template_name,context=context)

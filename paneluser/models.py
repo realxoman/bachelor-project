@@ -76,9 +76,8 @@ class ticket(models.Model):
         return self.subject
     
 class ticketpm(models.Model):
-    user = models.ForeignKey("User", on_delete=models.DO_NOTHING,verbose_name="کاربر")
-    ticket = models.ForeignKey("ticket", on_delete=models.CASCADE,verbose_name="تیکت")
+    user = models.ForeignKey("User", on_delete=models.DO_NOTHING,verbose_name="کاربر",null=True,blank=True)
+    ticketid = models.ForeignKey("ticket", on_delete=models.CASCADE,verbose_name="تیکت",null=True,blank=True)
     text = RichTextUploadingField(null=True,blank=True,verbose_name="متن")
     attachment = models.FileField(null=True,blank=True,upload_to=ticket_file_path,verbose_name="پیوست")
-    def __str__(self):
-        return self.ticket.subject + " " + self.id
+    

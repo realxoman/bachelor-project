@@ -23,12 +23,32 @@ form p{
 form input{
    padding:10px;
    border-radius:10px;
+}.bg-success:nth-child(odd){
+   background:#0B5ED7!important;
 }
 </style>
    <div class="ae-table w-100 row">
       <div class="col-3"></div>
       <div class="col-lg-8">
-      {{ticketid.status}}
+<div class="bg-dark text-light p-3 rounded my-2">
+   <p class="my-4">نام کاربر: {{ticketid.user.username}}</p>
+   <p class="my-4">نام محصول: {{ticketid.order.packs.name}}</p>
+   <p class="my-4">اولویت: {{ticketid.get_status_display}}</p>
+   <p class="my-4">وضعیت: {{ticketid.get_priority_display}}</p>
+   <p class="my-4">دپارتمان: {{ticketid.get_depertment_display}}</p>
+   <p class="my-4">عنوان پیام: <p class="m-2">{{ticketid.subject|safe}}</p></p>
+   <p class="my-4">متن پیام: <p class="m-2">{{ticketid.text|safe}}</p></p>
+   <p class="my-4">پیوست: <a href="/media/{{ticketid.attachment}}" class="my-2">{{ticketid.attachment}}</a></p>
+</div>
+{% for object in ticketpms %}
+<div class="bg-success text-light p-3 rounded my-2">
+<p class="my-4">نام کاربر: {{object.user.username}}</p>
+<p class="my-4">متن پیام: <p class="m-2">{{object.text|safe}}</p></p>
+   <p class="my-4">پیوست: <a href="/media/{{object.attachment}}" class="my-2">{{object.attachment}}</a></p>
+</div>
+{% endfor %}
+       <div class="bg-info p-3 rounded">
+       <h2>ارسال پاسخ جدید به تیکت</h2>
 <form method="POST" enctype="multipart/form-data">{% csrf_token %}
     
 <!-- form variable -->
@@ -38,6 +58,8 @@ form input{
   <input class="m-4 btn btn-success" type="submit" name="submit" value="بله مطمئنم" />
    <a href="../" class="btn btn-warning">نه نه اشتباه شد</a>
 </form>
+       </div>
+      
          </div>
       </div>
       <div class="col-1"></div>

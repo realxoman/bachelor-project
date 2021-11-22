@@ -23,4 +23,4 @@ class OrderProductForm(forms.Form):
 class TicketForm(ModelForm):
     class Meta:
         model = ticketpm
-        fields = "__all__"
+        fields = ('text','attachment')
