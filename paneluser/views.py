@@ -29,7 +29,7 @@ def signup(request):
                 user.phonenumber = form.cleaned_data.get('phonenumber')
                 user.save()
                 payam = "کاربر ساخته شد."
-                render(request, 'signup.html', {'form': form , 'payam' : payam})
+                return HttpResponseRedirect("/")
         else:
             form = SignUpForm()
         return render(request, 'signup.html', {'form': form , 'payam' : payam})

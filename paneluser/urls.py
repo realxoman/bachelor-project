@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 app_name = "paneluser"
 urlpatterns = [
-    path('', login_),
+    path('', login_,name="login"),
     path('logout/', logout_, name="logout_"),
     path('signup/', signup, name="signup"),
     #Administrator
