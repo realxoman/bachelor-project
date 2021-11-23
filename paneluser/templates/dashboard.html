@@ -1,57 +1,57 @@
 {% extends 'base.html' %}
 
 {% block body %}
+
 <body dir="rtl" class="dashboard">
-{% endblock %}
+   {% endblock %}
 
-{% block title%}
+   {% block title%}
    داشبورد مدیریت
-{% endblock %}
+   {% endblock %}
 
-{% block content %}
+   {% block content %}
 
-{% include 'includes/panel.html' %}
-<style>
-
-.p-5 p{
-   margin:10px auto;
-   text-align:center;
-   font-size:25px;
-   font-weight:bold;
-}
-</style>
-<div class="row justify-content-end w-100">
-   <div class="col-4 mx-5 my-3">
+   {% include 'includes/panel.html' %}
+   <style>
+      .p-5 p {
+         margin: 10px auto;
+         text-align: center;
+         font-size: 25px;
+         font-weight: bold;
+      }
+   </style>
+   <div class="row justify-content-end w-100">
+      <div class="col-4 mx-5 my-3">
          <h2>به پنل کاربری خوش آمدید</h2>
       </div>
-      <div class="col-4 mx-5 my-3">
-      
-   </div>
-   <div class="col-4 mx-5 my-3">
-      <div class="bg-success p-5 text-light rounded">
-         <p>تعداد محصولات</p>
-         <p>{{products.count}}</p>
+      <div class="col-4 mx-md-5 my-3">
+
+      </div>
+      <div class="col-lg-4 mx-lg-5 mx-auto my-3">
+         <div class="bg-success p-5 text-light rounded">
+            <p>تعداد محصولات</p>
+            <p>{{products.count}}</p>
+         </div>
+      </div>
+      <div class="col-lg-4  mx-lg-5 mx-auto my-3">
+         <div class="bg-warning p-5 text-light rounded">
+            <p>تعداد سفارشات</p>
+            <p>{{orders.count}}</p>
+         </div>
+      </div>
+      <div class="col-lg-4  mx-lg-5 mx-auto my-3">
+         <div class="bg-danger p-5 text-light rounded ">
+            <p>تعداد کاربران</p>
+            <p>{{user.count}}</p>
+         </div>
+      </div>
+      <div class="col-lg-4  mx-lg-5 mx-auto my-3">
+         <div class="bg-primary p-5 text-light rounded ">
+            <p>تعداد تیکت‌ها</p>
+            <p>{{ticket.count}}</p>
+         </div>
       </div>
    </div>
-   <div class="col-4 mx-5 my-3">
-      <div class="bg-warning p-5 text-light rounded">
-         <p>تعداد سفارشات</p>
-         <p>{{orders.count}}</p>
-      </div>
    </div>
-   <div class="col-4 mx-5 my-3">
-      <div class="bg-danger p-5 text-light rounded ">
-         <p>تعداد کاربران</p>
-         <p>{{user.count}}</p>
-      </div>
    </div>
-   <div class="col-4 mx-5 my-3">
-      <div class="bg-primary p-5 text-light rounded ">
-         <p>تعداد تیکت‌ها</p>
-         <p>{{ticket.count}}</p>
-      </div>
-   </div>
-</div>
-   </div>
-</div>
-{% endblock %}
+   {% endblock %}

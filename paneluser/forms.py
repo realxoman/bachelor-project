@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User,orders,ticketpm
+from .models import User,orders,ticketpm,ticket
 from django.forms import fields
 from django.forms import ModelForm
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
@@ -24,3 +24,21 @@ class TicketForm(ModelForm):
     class Meta:
         model = ticketpm
         fields = ('text','attachment')
+        
+        
+order_status = [
+    ('created','دریافت شده'),
+    ('customer_answer','پاسخ مشتری'),
+    ('admin_answer','پاسخ فروشنده'),
+    ('doing','در دست پیگیری'),
+    ('closed','بسته شده'),
+]
+class Ticket2Form(ModelForm):
+    select = forms.CharField(
+        widget=forms.Select(choices=order_status),
+    )
+    class Meta:
+        model = ticketpm
+        fields = ('text','attachment')
+    
+    

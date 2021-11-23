@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .models import User,ticket,orders,packs,ticketpm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
-from .forms import SignUpForm,OrderProductForm,TicketForm
+from .forms import SignUpForm,OrderProductForm,TicketForm,Ticket2Form
 from django.views.generic import View,ListView,DeleteView,UpdateView,CreateView,DetailView,FormView
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -192,7 +192,7 @@ class UserTickets(LoginRequiredMixin,ListView):
     
 class TicketDeleteView(AdminStaffRequiredMixin,DeleteView):
     model = ticket
-    success_url = '/administrator/users/'
+    success_url = '/administrator/tickets/'
     success_message = "پاکسازی انجام شد"
     
     def delete(self, request, *args, **kwargs):
@@ -229,12 +229,35 @@ class UserUpdateTicketView(LoginRequiredMixin,SuccessMessageMixin,View):
     def post(self,request,ticketid):
         ticketid = ticket.objects.get(id=ticketid)
         ticketpms = ticketpm.objects.filter(ticketid=ticketid)
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             desc = request.POST.get('text')
-            attach = request.POST.get('attachment')
+            attach = request.FILES['attachment']
             ticketpm1 = ticketpm(user=request.user,ticketid=ticketid,text=desc,attachment=attach)
             ticketid.status = "customer_answer"
+            ticketid.save()
+            ticketpm1.save()
+        context = {'form':form,'ticketpms':ticketpms,'ticketid':ticketid}
+        return render(request,self.template_name,context=context)
+    
+class AdminUpdateTicketView(AdminStaffRequiredMixin,SuccessMessageMixin,View):
+    template_name="paneluser/ticket_update2.html"
+    form_class = Ticket2Form
+    def get(self,request,ticketid):
+        ticketid = ticket.objects.get(id=ticketid)
+        ticketpms = ticketpm.objects.filter(ticketid=ticketid)
+        form = self.form_class
+        context = {'form':form,'ticketpms':ticketpms,'ticketid':ticketid}
+        return render(request,self.template_name,context=context)
+    def post(self,request,ticketid):
+        ticketid = ticket.objects.get(id=ticketid)
+        ticketpms = ticketpm.objects.filter(ticketid=ticketid)
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            desc = request.POST.get('text')
+            attach = request.FILES['attachment']
+            ticketid.status = request.POST.get('select')
+            ticketpm1 = ticketpm(user=request.user,ticketid=ticketid,text=desc,attachment=attach)
             ticketid.save()
             ticketpm1.save()
         context = {'form':form,'ticketpms':ticketpms,'ticketid':ticketid}

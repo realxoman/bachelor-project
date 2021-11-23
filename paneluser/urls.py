@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import login_,logout_,signup,AdminPanel,AdminOrders,AdminProducts,AdminTickets,AdminUsers,ProductsDeleteView,ProductsUpdateView,ProductsCreateView,OrdersDeleteView,OrdersUpdateView,UserDeleteView,UserUpdateView,TicketDeleteView,UserDashboard,ProductsDetailView,UserOrders,OrdersDetailView,OrderPurchase,UserTickets,TicketCreateView,AdminTicketCreateView,UserUpdateTicketView
+from .views import login_,logout_,signup,AdminPanel,AdminOrders,AdminProducts,AdminTickets,AdminUsers,ProductsDeleteView,ProductsUpdateView,ProductsCreateView,OrdersDeleteView,OrdersUpdateView,UserDeleteView,UserUpdateView,TicketDeleteView,UserDashboard,ProductsDetailView,UserOrders,OrdersDetailView,OrderPurchase,UserTickets,TicketCreateView,AdminTicketCreateView,UserUpdateTicketView,AdminUpdateTicketView
 from django.views.generic import TemplateView
 
 app_name = "paneluser"
@@ -19,7 +19,7 @@ urlpatterns = [
     path('administrator/tickets/', AdminTickets.as_view() ,name="tickets"),
     path('administrator/tickets/create/', AdminTicketCreateView.as_view() ,name="AdminTicketCreateView"),
     path('administrator/tickets/delete/<int:pk>', TicketDeleteView.as_view() ,name="ticket_delete"),
-    path('administrator/tickets/update/<int:pk>', TicketDeleteView.as_view() ,name="ticket_update"),
+    path('administrator/tickets/update/<int:ticketid>', AdminUpdateTicketView.as_view() ,name="ticket_update"),
     path('administrator/users/', AdminUsers.as_view() ,name="users"),
     path('administrator/users/delete/<int:pk>', UserDeleteView.as_view() ,name="users_delete"),
     path('administrator/users/update/<int:pk>', UserUpdateView.as_view() ,name="users_update"),

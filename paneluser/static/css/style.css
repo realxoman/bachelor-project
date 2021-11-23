@@ -301,6 +301,10 @@ body {
   margin-right: 5px;
 }
 
+#cke_id_text {
+  max-width: 700px;
+}
+
 .dashboard a.btn.ae-menu-dashboard,
 .products a.btn.ae-menu-products,
 .orders a.btn.ae-menu-orders,
